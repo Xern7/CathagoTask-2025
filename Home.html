@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cathago-2025</title>
+</head>
+<body>
+    <div>
+    <h1>
+        <p class="user-info" id="userInfo">...</p>
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+    </h1>
+    <h2>Upload a File</h2>
+        <input type="file" id="fileInput">
+    <button onclick="uploadFile()">Upload</button>
+    <p id="message"></p>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const user = localStorage.getItem("user");
+            console.log(user)
+            if (user) {
+                document.getElementById("userInfo").textContent = `Logged in as: ${user}`;
+            } else {
+                document.getElementById("userInfo").textContent = "No user logged in";
+            }
+
+            document.getElementById("logoutBtn").addEventListener("click", () => {
+                localStorage.removeItem("user");
+                window.location.href = "login.html";
+            });
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
